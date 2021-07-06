@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.domain;
+package com.kodilla.SocialMediaApp.domain.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

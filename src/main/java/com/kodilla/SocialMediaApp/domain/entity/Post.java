@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.domain;
+package com.kodilla.SocialMediaApp.domain.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -32,15 +32,15 @@ public final class Post {
 
     @Lob
     @Nullable
-    @Column(name = "CAPTION")
-    private String caption;
+    @Column(name = "HEADLINE")
+    private String headline;
 
     @Nullable
     @Column(name = "URL")
     private String url;
 
-    @Column(name = "IMAGE_SERIAL_NUMBER")
-    private Long imageSerialNumber;
+    @Column(name = "IMAGE_ID")
+    private Long imageId;
 
     @Column(name = "LIKES_COUNT")
     private Long likesCount;
@@ -50,11 +50,15 @@ public final class Post {
     @Column(name = "POST_DATE")
     private LocalDate postDate;
 
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private User user;
+
     @OneToMany(
+            cascade = CascadeType.REMOVE,
             targetEntity = Comment.class,
             mappedBy = "post",
             fetch = LAZY
     )
-
     private List<Comment> comments;
 }
