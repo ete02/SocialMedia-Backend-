@@ -1,5 +1,6 @@
 package com.kodilla.SocialMediaApp.domain.entity;
 
+import com.kodilla.SocialMediaApp.domain.enums.RoleType;
 import lombok.*;
 
 import javax.persistence.*;

@@ -1,5 +1,6 @@
 package com.kodilla.SocialMediaApp.domain.dto;
 
+import com.kodilla.SocialMediaApp.domain.enums.RoleType;
 import lombok.*;
 
 @Builder(toBuilder = true)
