@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Getter
 @Entity
 @Table(name = "POSTS")
-public final class Post {
+public final class Post  {
     @Id
     @GeneratedValue(strategy = SEQUENCE)
     private Long id;
@@ -32,23 +33,26 @@ public final class Post {
 
     @Lob
     @Nullable
-    @Column(name = "HEADLINE")
-    private String headline;
+    @Column(name = "CAPTION")
+    private String caption;
 
     @Nullable
     @Column(name = "URL")
     private String url;
 
-    @Column(name = "IMAGE_ID")
-    private Long imageId;
+    @Column(name = "IMAGE_SERIAL_NUMBER")
+    private Long imageSerialNumber;
 
     @Column(name = "LIKES_COUNT")
     private Long likesCount;
 
     @CreationTimestamp
-    @NotNull(message = "Post creation date can not be Null!")
+    @NotNull(message = "Post creation date can not be Null !")
     @Column(name = "POST_DATE")
-    private LocalDate postDate;
+    private Instant postDate;
+
+    @Column(name = "UPDATE_DATE")
+    private Instant updateDate;
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
