@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.facade;
+package com.kodilla.SocialMediaApp.facade.user;
 
 import com.kodilla.SocialMediaApp.domain.dto.PasswordRequest;
 import com.kodilla.SocialMediaApp.domain.dto.UserDto;

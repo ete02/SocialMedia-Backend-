@@ -3,7 +3,7 @@ package com.kodilla.SocialMediaApp.controller;
 import com.kodilla.SocialMediaApp.domain.dto.PasswordRequest;
 import com.kodilla.SocialMediaApp.domain.dto.UserDto;
 import com.kodilla.SocialMediaApp.domain.dto.UserRequest;
-import com.kodilla.SocialMediaApp.facade.UserFacade;
+import com.kodilla.SocialMediaApp.facade.user.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

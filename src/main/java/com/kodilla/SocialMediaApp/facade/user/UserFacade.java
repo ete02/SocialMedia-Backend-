@@ -1,11 +1,9 @@
-package com.kodilla.SocialMediaApp.facade;
+package com.kodilla.SocialMediaApp.facade.user;
 
 import com.kodilla.SocialMediaApp.domain.dto.PasswordRequest;
 import com.kodilla.SocialMediaApp.domain.dto.UserDto;
 import com.kodilla.SocialMediaApp.domain.dto.UserRequest;
-import com.kodilla.SocialMediaApp.domain.entity.Role;
 import com.kodilla.SocialMediaApp.domain.entity.User;
-import com.kodilla.SocialMediaApp.domain.entity.VerificationToken;
 import com.kodilla.SocialMediaApp.exceptions.user.UserNotFoundByIdException;
 import com.kodilla.SocialMediaApp.exceptions.user.UserNotFoundException;
 import com.kodilla.SocialMediaApp.mapper.UserMapper;
@@ -16,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
