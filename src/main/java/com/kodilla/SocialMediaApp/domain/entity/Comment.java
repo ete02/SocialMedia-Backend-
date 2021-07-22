@@ -8,14 +8,15 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Builder
+@Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 @Getter
 @Entity
 @Table(name = "COMMENTS")
@@ -24,7 +25,7 @@ public final class Comment {
     @GeneratedValue(strategy = SEQUENCE)
     private Long id;
 
-    @NotBlank(message = "Comment name is required!")
+    @NotBlank(message = "Comment name is required !")
     @Column(name = "COMMENT_NAME")
     private String commentName;
 
@@ -36,7 +37,10 @@ public final class Comment {
     @CreationTimestamp
     @NotNull(message = "Comment creation date can not be Null !")
     @Column(name = "COMMENT_DATE")
-    private LocalDate commentDate;
+    private Instant commentDate;
+
+    @Column(name = "UPDATE_DATE")
+    private Instant updateDate;
 
     @ManyToOne
     @JoinColumn(name = "POST_ID")

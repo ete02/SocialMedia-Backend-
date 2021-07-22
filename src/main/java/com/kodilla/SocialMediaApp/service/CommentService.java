@@ -1,31 +1,36 @@
 package com.kodilla.SocialMediaApp.service;
 
+import com.kodilla.SocialMediaApp.domain.dto.CommentRequest;
+import com.kodilla.SocialMediaApp.domain.dto.UpdateCommentRequest;
 import com.kodilla.SocialMediaApp.domain.entity.Comment;
+import com.kodilla.SocialMediaApp.domain.entity.Post;
 import com.kodilla.SocialMediaApp.repository.CommentRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class CommentService {
-    private final CommentRepo commentRepository;
+    private final CommentServiceDb commentServiceDb;
 
-    public List<Comment> getAllComments() {
-        return commentRepository.findAll();
+    public Comment createComment(final Post post, final CommentRequest commentRequest) {
+        return commentServiceDb.saveComment(Comment.builder()
+                .commentName(commentRequest.getLogin())
+                .content(commentRequest.getContent())
+                .commentDate(Instant.now())
+                .post(post)
+                .build());
     }
 
-    public Optional<Comment> getCommentById(final Long id) {
-        return commentRepository.findById(id);
-    }
-
-    public Comment saveComment(final Comment comment) {
-        return commentRepository.save(comment);
-    }
-
-    public void deleteCommentById(final Long id) {
-        commentRepository.deleteById(id);
+    public Comment updateComment(final Comment comment, final UpdateCommentRequest updateCommentRequest) {
+        return commentServiceDb.saveComment(comment.toBuilder()
+                .commentName(updateCommentRequest.getCommentName())
+                .content(updateCommentRequest.getContent())
+                .updateDate(Instant.now())
+                .build());
     }
 }
