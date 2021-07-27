@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+import static com.kodilla.SocialMediaApp.domain.util.Constants.CREATE_POST_IMAGE_SUCCESS;
 import static org.springframework.http.HttpStatus.OK;
 
 @Slf4j
