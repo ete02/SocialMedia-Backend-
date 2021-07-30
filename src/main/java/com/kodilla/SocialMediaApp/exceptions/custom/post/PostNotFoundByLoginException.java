@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.exceptions.post;
+package com.kodilla.SocialMediaApp.exceptions.custom.post;
 
 public class PostNotFoundByLoginException extends RuntimeException{
     public PostNotFoundByLoginException(String login) {

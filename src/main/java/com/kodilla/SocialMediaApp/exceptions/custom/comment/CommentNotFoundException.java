@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.exceptions.comment;
+package com.kodilla.SocialMediaApp.exceptions.custom.comment;
 
 public class CommentNotFoundException extends RuntimeException {
     public CommentNotFoundException(Long id) {

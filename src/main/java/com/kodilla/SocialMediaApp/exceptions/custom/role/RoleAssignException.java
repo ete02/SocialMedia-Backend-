@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.exceptions.role;
+package com.kodilla.SocialMediaApp.exceptions.custom.role;
 
 import com.kodilla.SocialMediaApp.domain.enums.RoleType;
 

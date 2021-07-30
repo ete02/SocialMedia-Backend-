@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.exceptions.role;
+package com.kodilla.SocialMediaApp.exceptions.custom.role;
 
 public class RoleNotFoundException extends RuntimeException{
     public RoleNotFoundException(Long id) {

@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.exceptions.security;
+package com.kodilla.SocialMediaApp.exceptions.custom.security;
 
 public class ChangePasswordException extends RuntimeException{
     public ChangePasswordException() {

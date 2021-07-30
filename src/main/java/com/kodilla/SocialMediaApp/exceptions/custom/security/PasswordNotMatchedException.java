@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.exceptions.security;
+package com.kodilla.SocialMediaApp.exceptions.custom.security;
 
 public class PasswordNotMatchedException extends RuntimeException{
     public PasswordNotMatchedException() {

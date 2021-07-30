@@ -1,7 +1,7 @@
 package com.kodilla.SocialMediaApp.service;
 
 import com.kodilla.SocialMediaApp.domain.entity.RefreshToken;
-import com.kodilla.SocialMediaApp.exceptions.security.InvalidRefreshTokenException;
+import com.kodilla.SocialMediaApp.exceptions.custom.security.InvalidRefreshTokenException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

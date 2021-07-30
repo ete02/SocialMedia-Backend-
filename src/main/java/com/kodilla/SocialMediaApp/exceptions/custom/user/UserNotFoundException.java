@@ -1,4 +1,4 @@
-package com.kodilla.SocialMediaApp.exceptions.user;
+package com.kodilla.SocialMediaApp.exceptions.custom.user;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(String message) {
