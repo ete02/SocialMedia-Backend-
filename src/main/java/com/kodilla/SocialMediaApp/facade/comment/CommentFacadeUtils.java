@@ -32,7 +32,7 @@ public class CommentFacadeUtils {
     private final CommentService commentService;
     private final CommentServiceDb commentServiceDb;
 
-    ResponseEntity<CommentDto> createCommentIfUserIsAuthorized(final CommentRequest commentRequest, final Post post, final User user) {
+    public ResponseEntity<CommentDto> createCommentIfUserIsAuthorized(final CommentRequest commentRequest, final Post post, final User user) {
         if (userValidator.isUserValidated(user)) {
             CommentDto commentDto = commentMapper.mapToCommentDto(
                     commentService.createComment(post, commentRequest));
@@ -50,7 +50,7 @@ public class CommentFacadeUtils {
         return new ResponseEntity<>(commentDto, OK);
     }
 
-    ResponseEntity<String> deleteCommentIfExists(final Long id) {
+    public ResponseEntity<String> deleteCommentIfExists(final Long id) {
         try {
             commentServiceDb.deleteCommentById(id);
             log.info("Comment deleted successfully!");

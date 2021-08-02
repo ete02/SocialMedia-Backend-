@@ -12,9 +12,9 @@ import java.time.Instant;
 public final class PostDto {
     private final Long id;
     private final String postName;
-    private final String headline;
+    private final String caption;
     private final String url;
-    private final Long imageId;
+    private final Long imageSerialNumber;
     private final Long likesCount;
     private final Instant postDate;
     private final Instant updateDate;

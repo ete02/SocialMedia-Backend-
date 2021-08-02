@@ -37,7 +37,7 @@ public class PostFacadeUtils {
     private final UserServiceDb userServiceDb;
     private final UserValidator userValidator;
 
-    ResponseEntity<List<PostDto>> getPostsIfExists(final String login) {
+    public ResponseEntity<List<PostDto>> getPostsIfExists(final String login) {
         try {
             List<PostDto> posts = postMapper.mapToPostsDto(postServiceDb.getAllPostsByLoginSortedDescending(login));
             log.info("Published posts returned successfully!");
@@ -47,7 +47,7 @@ public class PostFacadeUtils {
         }
     }
 
-    ResponseEntity<PostDto> createPostIfUserIsAuthorized(final PostRequest postRequest, final User user) {
+    public ResponseEntity<PostDto> createPostIfUserIsAuthorized(final PostRequest postRequest, final User user) {
         if (userValidator.isUserValidated(user)) {
             PostDto postDto = postMapper.mapToPostDto(postService.createPost(user, postRequest));
             log.info("Published post returned successfully!");
@@ -63,7 +63,7 @@ public class PostFacadeUtils {
         return new ResponseEntity<>(postDto, OK);
     }
 
-    ResponseEntity<PostDto> likePostIfUserIsValidated(final SimplePostRequest simplePostRequest, final Post post, final User user) {
+    public ResponseEntity<PostDto> likePostIfUserIsValidated(final SimplePostRequest simplePostRequest, final Post post, final User user) {
         if (userValidator.isUserValidatedToLikePost(user, post)) {
             post.countUp();
             user.getLikedPosts().add(post);
@@ -75,7 +75,7 @@ public class PostFacadeUtils {
         }
     }
 
-    ResponseEntity<PostDto> unlikePostIfUserIsValidated(final SimplePostRequest simplePostRequest, final Post post, final User user) {
+    public ResponseEntity<PostDto> unlikePostIfUserIsValidated(final SimplePostRequest simplePostRequest, final Post post, final User user) {
         if (userValidator.isUserValidatedToUnlikePost(user, post)) {
             post.countDown();
             user.getLikedPosts().remove(post);
@@ -87,7 +87,7 @@ public class PostFacadeUtils {
         }
     }
 
-    ResponseEntity<String> deletePostIfExists(final Long id) {
+    public ResponseEntity<String> deletePostIfExists(final Long id) {
         try {
             postServiceDb.deletePostById(id);
             log.info("Post deleted successfully!");

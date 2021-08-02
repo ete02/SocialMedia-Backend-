@@ -5,7 +5,7 @@ plugins {
 	id 'idea'
 }
 
-group = 'com.socialmedia'
+group = 'com.myinstagram'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -22,8 +22,11 @@ repositories {
 dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	implementation 'org.mapstruct:mapstruct:1.4.1.Final'
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
+	//compile group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+	//compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.8.0'
+	//runtime group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+	//compile group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+	//runtime group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation 'com.google.code.findbugs:jsr305:3.0.2'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -38,10 +41,11 @@ dependencies {
 	implementation 'org.postgresql:postgresql'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation "com.google.guava:guava:30.0-jre"
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	testImplementation "org.junit.jupiter:junit-jupiter-api"
+	testImplementation "org.junit.jupiter:junit-jupiter-params"
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 }
 
 test {

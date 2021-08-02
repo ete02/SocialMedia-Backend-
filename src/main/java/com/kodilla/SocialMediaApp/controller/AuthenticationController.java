@@ -5,6 +5,7 @@ import com.kodilla.SocialMediaApp.domain.au.LoginRequest;
 import com.kodilla.SocialMediaApp.domain.au.RefreshTokenRequest;
 import com.kodilla.SocialMediaApp.domain.au.RegisterRequest;
 import com.kodilla.SocialMediaApp.domain.entity.RefreshToken;
+import com.kodilla.SocialMediaApp.security.service.AuthenticationService;
 import com.kodilla.SocialMediaApp.service.RefreshTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

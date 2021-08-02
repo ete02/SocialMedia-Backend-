@@ -29,7 +29,7 @@ public class RoleFacadeUtils {
     private final RoleServiceDb roleServiceDb;
     private final UserValidator userValidator;
 
-    ResponseEntity<RoleDto> assignRoleIfUserIsValidated(final RoleRequest roleRequest, final User userFromDb) {
+    public ResponseEntity<RoleDto> assignRoleIfUserIsValidated(final RoleRequest roleRequest, final User userFromDb) {
         if (userValidator.isUserValidateToAssignRole(userFromDb, roleRequest)) {
             RoleDto roleDto = roleMapper.mapToRoleDto(roleServiceDb.saveRole(Role.builder()
                     .roleType(roleRequest.getRoleType())
@@ -42,7 +42,7 @@ public class RoleFacadeUtils {
         }
     }
 
-    ResponseEntity<String> deleteRoleIfExists(final Long id) {
+    public ResponseEntity<String> deleteRoleIfExists(final Long id) {
         try {
             roleServiceDb.deleteRoleById(id);
             log.info("Role deleted successfully!");

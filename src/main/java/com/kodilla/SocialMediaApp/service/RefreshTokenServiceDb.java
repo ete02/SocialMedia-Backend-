@@ -1,6 +1,7 @@
 package com.kodilla.SocialMediaApp.service;
 
 import com.kodilla.SocialMediaApp.domain.entity.RefreshToken;
+import com.kodilla.SocialMediaApp.repository.RefreshTokenRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class RefreshTokenServiceDb {
-    private final RefreshTokenRepository refreshTokenRepository;
+    private final RefreshTokenRepo refreshTokenRepository;
 
     public List<RefreshToken> getAllRefreshTokens() {
         return refreshTokenRepository.findAll();

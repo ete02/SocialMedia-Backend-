@@ -11,17 +11,22 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import java.sql.ConnectionBuilder;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.EnumType.STRING;
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Builder
+@Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 @Getter
 @Entity
 @Table(name = "USERS")
@@ -30,22 +35,25 @@ public final class User {
     @GeneratedValue(strategy = SEQUENCE)
     private Long id;
 
-    @NotBlank(message = "User name is needed!")
     @Column(name = "USER_NAME")
     private String userName;
 
-    @NotBlank(message = "Login is needed!")
+    @NotBlank(message = "Login is required !")
     @Column(name = "LOGIN", unique = true)
     private String login;
 
-    @NotBlank(message = "Password is needed!")
+    @NotBlank(message = "Password is required !")
     @Column(name = "PASSWORD")
     private String password;
 
     @Email
     @NotEmpty(message = "Email is required !")
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", unique = true)
     private String email;
+
+    @NotBlank(message = "City is required !")
+    @Column(name = "CITY")
+    private String city;
 
     @Nullable
     @Lob
@@ -53,16 +61,19 @@ public final class User {
     private String description;
 
     @CreationTimestamp
-    @NotNull(message = "User create date cannot be Null!")
+    @NotNull(message = "User create date cannot be Null !")
     @Column(name = "CREATE_DATE")
-    private LocalDate createDate;
+    private Instant createDate;
 
-    @NotNull(message = "User status cannot be Null!")
+    @Column(name = "UPDATE_DATE")
+    private Instant updateDate;
+
+    @NotNull(message = "User status cannot be Null !")
     @Enumerated(STRING)
     @Column(name = "USER_STATUS")
     private UserStatus userStatus;
 
-    @NotNull(message = "User validation status cannot be Null!")
+    @NotNull(message = "User validation status cannot be Null !")
     @Column(name = "Enabled")
     private boolean enabled;
 
@@ -80,5 +91,9 @@ public final class User {
     @JoinColumn(name = "LIKED_POSTS")
     private List<Post> likedPosts;
 
-
+    @ManyToMany(
+            targetEntity = Role.class,
+            mappedBy = "users",
+            fetch = EAGER)
+    private Set<Role> roles;
 }

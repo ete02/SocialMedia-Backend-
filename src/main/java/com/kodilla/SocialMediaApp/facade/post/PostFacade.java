@@ -9,6 +9,7 @@ import com.kodilla.SocialMediaApp.domain.entity.User;
 import com.kodilla.SocialMediaApp.exceptions.custom.post.PostNotFoundException;
 import com.kodilla.SocialMediaApp.exceptions.custom.user.UserNotFoundException;
 import com.kodilla.SocialMediaApp.mapper.PostMapper;
+import com.kodilla.SocialMediaApp.service.ImageService;
 import com.kodilla.SocialMediaApp.service.PostServiceDb;
 import com.kodilla.SocialMediaApp.service.UserServiceDb;
 import lombok.RequiredArgsConstructor;

@@ -22,7 +22,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Getter
 @Entity
 @Table(name = "POSTS")
-public final class Post  {
+public final class Post implements Comparable<Post> {
     @Id
     @GeneratedValue(strategy = SEQUENCE)
     private Long id;
@@ -65,4 +65,17 @@ public final class Post  {
             fetch = LAZY
     )
     private List<Comment> comments;
+
+    @Override
+    public int compareTo(final Post post) {
+        return this.postDate.compareTo(post.postDate);
+    }
+
+    public void countUp() {
+        this.likesCount++;
+    }
+
+    public void countDown() {
+        this.likesCount--;
+    }
 }
